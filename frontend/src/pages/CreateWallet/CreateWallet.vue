@@ -112,16 +112,16 @@ export default {
       this.valid_password = is_valid;
       this.confirmPassword();
     },
-    savePasswordToKeychain: function () {
-      return window.backend.WalletApplication.InitKeychains().then((result) => {
-        if (result) {
-          return window.backend.WalletApplication.SavePasswordToKeychain(
-              this.keystorePassword
-          )
-        }
-        return null;
-      })
-    },
+    // savePasswordToKeychain: function () {
+    //   return window.backend.WalletApplication.InitKeychains().then((result) => {
+    //     if (result) {
+    //       return window.backend.WalletApplication.SavePasswordToKeychain(
+    //           this.keystorePassword
+    //       )
+    //     }
+    //     return null;
+    //   })
+    // },
     moveToRecoveryPhraseInfo: function() {
       // if (this.valid === false) return;
       // this.savePasswordToKeychain().then((result) => {

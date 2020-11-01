@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"os/user"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -14,7 +13,7 @@ import (
 	"time"
 
 	"github.com/grvlle/constellation_wallet/backend/models"
-	"github.com/zalando/go-keyring"
+// 	"github.com/zalando/go-keyring"
 )
 
 
@@ -478,66 +477,66 @@ func (a *WalletApplication) initDashboardWidgets() {
 }
 
 // SavePasswordToKeychain is for saving password to new keychain
-func (a *WalletApplication) SavePasswordToKeychain(keystorePassword string) bool {
-	return a.saveInfoToKeychain(ServiceLogin, keystorePassword)
-}
-
-// SavePhraseandPKeyToKeychain is for saving password to new keychain
-func (a *WalletApplication) SavePhraseandPKeyToKeychain(seedPhrase, privateKey string) bool {
-	return a.saveInfoToKeychain(ServiceSeed, seedPhrase) && a.saveInfoToKeychain(ServicePKey, privateKey)
-}
+// func (a *WalletApplication) SavePasswordToKeychain(keystorePassword string) bool {
+// 	return a.saveInfoToKeychain(ServiceLogin, keystorePassword)
+// }
+//
+// // SavePhraseandPKeyToKeychain is for saving password to new keychain
+// func (a *WalletApplication) SavePhraseandPKeyToKeychain(seedPhrase, privateKey string) bool {
+// 	return a.saveInfoToKeychain(ServiceSeed, seedPhrase) && a.saveInfoToKeychain(ServicePKey, privateKey)
+// }
 
 // InitKeychains is for initializing of all your existing keychains
-func (a *WalletApplication) InitKeychains() bool {
-	user, err := user.Current()
-	if err != nil {
-		a.log.Warnln("Unable to detect your username.")
-		a.LoginError("Unable to detect your username.")
-		return false
-	}
+// func (a *WalletApplication) InitKeychains() bool {
+// 	user, err := user.Current()
+// 	if err != nil {
+// 		a.log.Warnln("Unable to detect your username.")
+// 		a.LoginError("Unable to detect your username.")
+// 		return false
+// 	}
+//
+// 	account := user.Username
+//
+// 	a.deleteKeychain(ServiceLogin, account)
+// 	a.deleteKeychain(ServiceSeed, account)
+// 	a.deleteKeychain(ServicePKey, account)
+//
+// 	return true
+// }
 
-	account := user.Username
+// func (a *WalletApplication) saveInfoToKeychain(service, info string) bool {
+// 	user, err := user.Current()
+// 	if err != nil {
+// 		a.log.Warnln("Unable to detect your username.")
+// 		a.LoginError("Unable to detect your username.")
+// 		return false
+// 	}
+//
+// 	account := user.Username
+//
+// 	err = keyring.Set(service, account, info)
+// 	if (err != nil) {
+// 		a.log.Warnln("Unable to create your keychain.")
+// 		a.LoginError("Unable to create your keycahin.")
+// 		return false
+// 	}
+//
+// 	return true
+// }
 
-	a.deleteKeychain(ServiceLogin, account)
-	a.deleteKeychain(ServiceSeed, account)
-	a.deleteKeychain(ServicePKey, account)
-
-	return true
-}
-
-func (a *WalletApplication) saveInfoToKeychain(service, info string) bool {
-	user, err := user.Current()
-	if err != nil {
-		a.log.Warnln("Unable to detect your username.")
-		a.LoginError("Unable to detect your username.")
-		return false
-	}
-
-	account := user.Username
-
-	err = keyring.Set(service, account, info)
-	if (err != nil) {
-		a.log.Warnln("Unable to create your keychain.")
-		a.LoginError("Unable to create your keycahin.")
-		return false
-	}
-	
-	return true
-}
-
-func (a *WalletApplication) deleteKeychain(service, account string) error {
-	_, err := keyring.Get(service, account)
-	if (err != nil) {
-		return nil
-	}
-	err = keyring.Delete(service, account)
-	if err != nil {
-		a.log.Warnln("Unable to delete your existing keychain: ", service)
-		a.LoginError("Unable to delete your existing keychain.")
-		return err
-	}
-	return nil
-}
+// func (a *WalletApplication) deleteKeychain(service, account string) error {
+// 	_, err := keyring.Get(service, account)
+// 	if (err != nil) {
+// 		return nil
+// 	}
+// 	err = keyring.Delete(service, account)
+// 	if err != nil {
+// 		a.log.Warnln("Unable to delete your existing keychain: ", service)
+// 		a.LoginError("Unable to delete your existing keychain.")
+// 		return err
+// 	}
+// 	return nil
+// }
 
 func (a *WalletApplication) createTXFiles() error {
 	files := []string{a.paths.LastTXFile, a.paths.PrevTXFile, a.paths.EmptyTXFile}
