@@ -205,7 +205,7 @@ func (a *WalletApplication) produceKeystoreMigrateV2(keystorePath, alias string)
 			a.log.Errorln("Password is incorrect. Reason: ", err)
 			return false, errors.New("Possibly wrong Key Password")
 		}
-		if strings.Contains(s, "java.lang.NullPointerException\n	at org.constellation.keytool.KeyStoreUtils$.$anonfun$unlockKeyPair$1") {
+		if (strings.Contains(s, "java.lang.NullPointerException") && strings.Contains(s, "org.constellation.keytool.KeyStoreUtils$.$anonfun$unlockKeyPair$1")) {
 			a.log.Errorln("Alias is incorrect. Reason: ", err)
 			return false, errors.New("Unable to find alias")
 		}

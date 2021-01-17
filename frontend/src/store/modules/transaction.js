@@ -23,9 +23,12 @@ const mutations = {
     updateFullTxHistory(state, obj) {
         let arr = obj.txHistoryFull || [];
 
-        arr.sort((a, b) => {
-            return new Date(b.date) - new Date(a.date);
-        });
+        //GO-SIDE BUG: Year was not provided in persisted tx: Format("Jan _2 15:04:05")
+        //  It's better not to sort and use as-is from GO
+        //
+        // arr.sort((a, b) => {
+        //     return new Date(b.date) - new Date(a.date);
+        // });
 
         state.txHistory = arr;
     },

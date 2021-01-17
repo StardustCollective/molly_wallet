@@ -199,7 +199,7 @@ func (a *WalletApplication) postTransaction(txObject string) *models.TXHistory {
 			Receiver: tx.Edge.ObservationEdge.Parents[1].HashReference,
 			Fee:      tx.Edge.Data.Fee,
 			Hash:     hash,
-			TS:       time.Now().Format("Jan _2 15:04:05"),
+			TS:       time.Now().Format("Jan _2 15:04:05 2006"),
 			Status:   "Pending",
 			Failed:   false,
 		}
@@ -216,7 +216,7 @@ func (a *WalletApplication) postTransaction(txObject string) *models.TXHistory {
 		Receiver: tx.Edge.ObservationEdge.Parents[1].HashReference,
 		Fee:      tx.Edge.Data.Fee,
 		Hash:     hash,
-		TS:       time.Now().Format("Jan _2 15:04:05"),
+		TS:       time.Now().Format("Jan _2 15:04:05 2006"),
 		Status:   "Error",
 		Failed:   true,
 	}

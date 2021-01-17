@@ -626,7 +626,7 @@ func (a *WalletApplication) initTXFromBlockExplorer() {
                 Receiver: tx.Receiver,
                 Fee:      tx.Fee,
                 Hash:     tx.Hash,
-                TS:       t.In(t.Local().Location()).Format("Jan _2 15:04:05"),
+                TS:       t.In(t.Local().Location()).Format("Jan _2 15:04:05 2006"),
                 Status:   "Complete",
                 Failed:   false,
             }
