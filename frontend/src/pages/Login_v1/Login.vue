@@ -87,7 +87,7 @@ export default {
       Swal.fire({
         title:
           "<p style='text-align: left; color: white; margin: auto;'>Important Update</p>",
-        html: `<br><p style='text-align: left; color: white;'>If you have previously signed into Molly Wallet using a file, two passwords and alias (versions 1.x.x), then you will need to create a new Wallet 2.0 first. <br><br> You will be able import your key files later.</p>`,
+        html: `<br><p style='text-align: left; color: white;'>If you have previously signed into Molly Wallet using a file, two passwords and alias (versions 1.x.x), then you will need to create a new Wallet 2.1 first. <br><br> You will be able import your key files later.</p>`,
         width: 300,
         padding: 20,
         backdrop: false,

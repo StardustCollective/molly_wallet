@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col mx-auto login-box">
               <div class="input-box">
-                <p>A new file has been created and ready to be used for Molly Wallet 2.0. This file is located in the same directory as the original.</p>
+                <p>A new file has been created and ready to be used for Molly Wallet 2.1. This file is located in the same directory as the original.</p>
                 <p style="font-weight: bold">{{ filePath }}.</p>
               </div>
               <br />

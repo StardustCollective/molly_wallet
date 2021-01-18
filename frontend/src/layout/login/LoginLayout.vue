@@ -36,7 +36,7 @@
             v-else
             v-bind:class="{ 'text-center': !this.$route.params.message }"
           >
-            Welcome to Molly Wallet 2.0
+            Welcome to Molly Wallet 2.1
           </p>
 
           <p class="sub-title" v-if="this.$route.params.message">
