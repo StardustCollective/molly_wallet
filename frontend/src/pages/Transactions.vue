@@ -304,8 +304,12 @@ export default {
                 },
               });
 
-              const amount = parseFloat(self.txAmount.normalized, 10);
-              const fee = parseFloat(feeResult[1], 10);
+              let amount = parseFloat(self.txAmount.normalized, 10);
+              let fee = parseFloat(feeResult[1], 10);
+
+              //Keep only 8 decimals of precision
+              amount = Math.floor(amount * 1e8) / 1e8;
+              fee = Math.floor(fee * 1e8) / 1e8;
 
               window.backend.WalletApplication.GetLastAcceptedTransactionRef().then(
                 (result) => {
